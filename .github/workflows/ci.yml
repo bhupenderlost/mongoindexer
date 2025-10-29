@@ -46,10 +46,11 @@ jobs:
         with:
           version: latest
           args: run ./...
+          skip-cache: true
+          timeout: 5m
 
       - name: Run unit tests
         run: |
           echo "Running tests..."
           go test -v -coverprofile=coverage.out ./...
           go tool cover -func=coverage.out
-
