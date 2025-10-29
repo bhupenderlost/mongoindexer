@@ -67,8 +67,9 @@ func main() {
     coll := db.Collection("users")
 
     indexer := mongoindexer.New()
+  	wrapped := mongoindexer.WrapCollection(coll)
 
-    if err := indexer.CreateIndexes(ctx, coll, User{}); err != nil {
+    if err := indexer.CreateIndexes(ctx, wrapped, User{}); err != nil {
         log.Fatal("Index creation failed:", err)
     }
 
